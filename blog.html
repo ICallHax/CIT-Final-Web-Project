@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Kraz's Portfolio</title>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/png" href="favicon.ico">
+  <link href="css/style.css" rel="stylesheet">
+  <meta name="viewport"
+     content="width=device-width, initial-scale=1, user-scalable=yes">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+	<script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+	<script>
+	  // Initialize Firebase
+	  var config = {
+	    apiKey: "AIzaSyAuIdTLGQBwWWUM7ZmPBFSq0YWDRT7X0E4",
+	    authDomain: "web-final-project-55455.firebaseapp.com",
+	    databaseURL: "https://web-final-project-55455.firebaseio.com",
+	    projectId: "web-final-project-55455",
+	    storageBucket: "web-final-project-55455.appspot.com",
+	    messagingSenderId: "745210944177"
+	  };
+	  firebase.initializeApp(config);
+	</script> 
+  </head>
+<body>
+
+
+
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark mb-sm-3">
+	<div class="container">
+		<a class="navbar-brand" href="index.html">Kraz Zarkov</a>
+		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+		    <span class="navbar-toggler-icon"></span>
+		</button>
+	<div class="collapse navbar-collapse text-right" id="navbarNavAltMarkup">
+		<div class="navbar-nav ml-auto">
+		    <a class="nav-item nav-link" href="index.html">Home</a>
+		    <a class="nav-item nav-link" href="work.html">My Work</a>
+		    <a class="nav-item nav-link" href="assets.html">Assets</a>
+		    <a class="nav-item nav-link" href="personal.html">Personal Projects</a>
+		    <a class="nav-item nav-link" href="awards.html">Awards</a>
+		    <a class="nav-item nav-link" href="location.html">Location</a>
+		    <a class="nav-item nav-link" href="resume.html">Resume</a>
+		    <a class="nav-item nav-link active" href="blog.html">Blog<span class="sr-only">(current)</span></a>
+		    <a class="nav-item nav-link" href="contact.html">Contact</a>
+		    <a class="nav-item nav-link" id="admin" href="admin.html" style="display:none;">Admin</a>		    
+		    <a class="nav-item nav-link" href="#" id="navbar_signin_btn" style="display:none;">Sign In</a>
+		    <a class="nav-item nav-link" href="#" id="navbar_register_btn" style="display:none;">Create Account</a>
+			<a class="nav-item nav-link" href="#" id="navbar_signout_btn" style="display:none;" onclick="signOut()">Sign Out</a>
+		</div>
+	</div>
+</div>
+</nav>
+
+
+
+<!-- Create account -->
+<div class="modal fade" id="createaccmodal" tabindex="-1" role="dialog" aria-labelledby="createaccmodal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Create Account</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form>
+			<div class="form-group">
+				<label for="create_email">Email address</label>
+				<input type="email" class="form-control" id="create_user_email" aria-describedby="emailHelp" placeholder="Enter email">
+				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+			</div>
+			<div class="form-group">
+				<label for="create_password">Password</label>
+				<input type="password" class="form-control" id="create_user_pass" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-primary" onclick="adduser()" data-dismiss="modal">Create Account</button>
+		</form>
+		</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- Sign In account -->
+<div class="modal fade" id="signinmodal" tabindex="-1" role="dialog" aria-labelledby="signinmodal" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Sign in</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       <form>
+			<div class="form-group">
+				<label for="sign_in_email">Email address</label>
+				<input type="email" class="form-control" id="user_email" aria-describedby="emailHelp" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="sign_in_password">Password</label>
+				<input type="password" class="form-control" id="user_pass" placeholder="Password">
+			</div>
+			<button type="submit" class="btn btn-primary" onclick="signIn()" data-dismiss="modal">Sign In</button>
+		</form>
+		</div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+<br>
+
+<!-- Blog -->
+<div class="container">
+	<h1>My Blog</h1>
+	<p class="lead">You need to be signed in to view this content.</p>
+</div>
+<br>
+
+<!-- My Blog-->
+<div class="container" id="blogcontainer" style="display:none;">
+		<div class="card-deck" id="blogs"></div>
+</div>
+
+
+<!-- Footer -->
+<footer class="d-flex justify-content-center mt-auto" id="footer">
+    <div class="d-flex justify-content-between col-md-8 col-md-offset-2 mb-3 mt-5">
+        <div class="align-left">
+        	<p> Copyright 2019 Krasimir Zarkov </p>
+        </div>
+        <div class="align-right small">
+          Created by <a class="font-weight-bold" href="#">Kraz</a>
+        </div>
+    </div>
+</footer>
+
+
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react@16/umd/react.development.js" crossorigin></script>
+<script src="https://unpkg.com/react-dom@16/umd/react-dom.development.js" crossorigin></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script src="js/javascript.js"></script>
+<script src="js/blog.js"></script>
+
+</body>
+</html>
