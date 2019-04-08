@@ -68,12 +68,12 @@
       <div class="modal-body">
        <form>
 			<div class="form-group">
-				<label for="create_email">Email address</label>
+				<label for="create_user_email">Email address</label>
 				<input type="email" class="form-control" id="create_user_email" aria-describedby="emailHelp" placeholder="Enter email">
 				<small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
 			</div>
 			<div class="form-group">
-				<label for="create_password">Password</label>
+				<label for="create_user_pass">Password</label>
 				<input type="password" class="form-control" id="create_user_pass" placeholder="Password">
 			</div>
 			<button type="submit" class="btn btn-primary" onclick="adduser()" data-dismiss="modal">Create Account</button>
@@ -100,11 +100,11 @@
       <div class="modal-body">
        <form>
 			<div class="form-group">
-				<label for="sign_in_email">Email address</label>
+				<label for="user_email">Email address</label>
 				<input type="email" class="form-control" id="user_email" aria-describedby="emailHelp" placeholder="Enter email">
 			</div>
 			<div class="form-group">
-				<label for="sign_in_password">Password</label>
+				<label for="user_pass">Password</label>
 				<input type="password" class="form-control" id="user_pass" placeholder="Password">
 			</div>
 			<button type="submit" class="btn btn-primary" onclick="signIn()" data-dismiss="modal">Sign In</button>
@@ -130,15 +130,15 @@
 	<h5>Create Blog Post</h5>
 	<form>
 		<div class="form-group">
-			<label for="Blog Title">Blog Title</label>
-			<input type="text" class="form-control" id="btitle" aria-describedby="blogtitle" placeholder="Enter Blog Title">
+			<label for="btitle">Blog Title</label>
+			<input type="text" class="form-control" id="btitle" aria-describedby="btitle" placeholder="Enter Blog Title">
 		</div>
 		<div class="form-group">
-			<label for="Blog Date">Blog Date</label>
-			<input type="text" class="form-control" id="bdate" aria-describedby="blogdate" placeholder="Enter Blog Date">
+			<label for="bdate">Blog Date</label>
+			<input type="text" class="form-control" id="bdate" aria-describedby="bdate" placeholder="Enter Blog Date">
 		</div>
 		<div class="form-group">
-	    	<label for="Blog Text">Blog Text</label>
+	    	<label for="btext">Blog Text</label>
 	    	<textarea class="form-control" id="btext" rows="3"></textarea>
 	  	</div>
 			<button type="button" class="btn btn-primary" onclick="addData()">Add Data</button>
